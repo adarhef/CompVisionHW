@@ -36,6 +36,6 @@ function [ TransformedIm ] = ComputeProjective( im, H )
         end
     end
      
-    TransformedIm = image(imageMat);
+    TransformedIm = imageMat;
 end
 
