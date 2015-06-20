@@ -14,7 +14,7 @@ disp( ['The error of the DLT (averaged over ' num2str(DLT_runs) ' runs):'] );
 disp( error / DLT_runs );
 
 warning('off','all');
-H_RANSAC = RANSAC_Wrapper(matches', @fittingfn, @distfn, @degenfn, 12, 50, 0, 100, 1000);
+H_RANSAC = RANSAC_Wrapper(matches', @fittingfn, @distfn, @degenfn, 4, 80, 0, 100000, 100000);
 
 disp( 'The error of RANSAC:');
 disp( ComputeError(H, H_RANSAC) );

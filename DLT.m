@@ -43,15 +43,14 @@ h = V(:, size(V, 2));
 H = inv(T_Tag) * horzcat(h(1:3), h(4:6), h(7:9)) * T;
 H = H/H(3,3);
 
-H(3,1) = 0;
-H(3,2) = 0;
+H(1,3) = 0;
+H(2,3) = 0;
 
-H = H';
 end
 
 function [ translateMatrix ] = getTranslateByMeanMatrix( points )
 pointsMean = mean( points, 2 );
-n = size( points, 2);
+
 translateMatrix = [1 0 -pointsMean(1)
                    0 1 -pointsMean(2)
                    0 0 1];           
@@ -62,7 +61,7 @@ n = size( points, 2 );
 sum = 0;
 
 for i=1:n
-    sum = sum + norm( points(:, i) );
+    sum = sum + norm( points(1:2, i) );
 end
 
 multiplier = n * avgLength / sum;

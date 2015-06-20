@@ -1,4 +1,4 @@
-function [ inliers, M ] = FittingFn( M, x, t )
+function [ inliers, M ] = distfn( M, x, t )
 
 inliers = [];
 
@@ -10,7 +10,9 @@ temp = [x(1:2, :)
         ones(1, n)];
     
 for i=1:n
-    dist = norm( M * temp(1:3, i) - temp(4:6, i) );
+    a = M * temp(1:3, i);
+    b = temp(4:6, i);
+    dist = norm( a / a(3) - b );
     if (dist < t)
         inliers = [inliers i];
     end
